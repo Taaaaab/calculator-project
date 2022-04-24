@@ -1,47 +1,39 @@
+const container = document.querySelector('#container');
+const display = document.querySelector('#display');
+let displayNum = 0;
+
+const btn9 = document.querySelector('#btn9');
+btn9.addEventListener('click', () => {
+    let displayNum = 9;
+    const display9 = document.createElement('div');
+    display9.textContent = `${displayNum}`;
+    display.appendChild(display9);
+  });
+
 const add = (num1, num2) => num1 + num2;
-
 const subtract = (num1, num2) => num1 - num2;
+const multiply = (num1, num2) => num1 * num2;
+const divide = (num1, num2) => num1 / num2;
 
-const sum = function([...array1]) {
-  const initialValue = 0;
-  const sumWithInitial = array1.reduce(
-    (previousValue, currentValue) => previousValue + currentValue,
-    initialValue
-  );
-  return sumWithInitial;
-};
+// Create a new function operate that takes an operator (+, -, *, /)
+// and 2 numbers and then calls one of the above functions on the numbers.
 
-const multiply = function([...array1]) {
-  const initialValue = 1;
-  const sumWithInitial = array1.reduce(
-    (previousValue, currentValue) => previousValue * currentValue,
-    initialValue
-  );
-  return sumWithInitial;
-};
-
-const power = function([...array1]) {
-  const sumWithInitial = array1.reduce(
-    (previousValue, currentValue) => Math.pow(previousValue , currentValue)
-  );
-  return sumWithInitial;
-};
-
-const factorial = function(num) {
-	if (num < 0)
-  return -1;
-
-  else if (num === 0)
-  return 1;
-
-  else {
-    return (num * factorial(num - 1));
-  }
+function operate(operator, num1, num2) {
+    if (operator === "+" || operator === "add") {
+        return add(num1, num2);
+    }
+    else if (operator === "-" || operator === "subtract") {
+        return subtract(num1, num2);
+    }
+    else if (operator === "*" || operator === "multiply") {
+        return multiply(num1, num2);
+    }
+    else if (operator === "/" || operator === "divide") {
+        return divide(num1, num2);
+    }
+    
 }
 
-console.log(add(2, 2));
-console.log(subtract(10, 2));
-console.log(sum([10, 5]));
-console.log(multiply([10, 5]));
-console.log(power([8, 2]));
-console.log(factorial(10));
+console.log(operate("+",5,10));
+console.log(operate("/",21,7));
+console.log(operate("multiply",5,10));
