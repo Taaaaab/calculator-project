@@ -1,7 +1,9 @@
 const container = document.querySelector('#container');
 const display = document.querySelector('#display');
 let displayNum = [0];
+let displayNumPrev = [0];
 let operator = '';
+let equalNum = 0;
 
 const btn9 = document.querySelector('#btn9');
 btn9.addEventListener('click', () => {
@@ -66,37 +68,48 @@ btn9.addEventListener('click', () => {
                     const btnAdd = document.querySelector('#btnAdd');
                     btnAdd.addEventListener('click', () => {
                         operator = '+';
-                        display.textContent = `${displayNum}+`;
+                        displayNumPrev = displayNum;
+                        displayNum = [0];
+                        display.textContent = `${displayNumPrev} + ${displayNum}`;
                       });
                     
                       const btnSub = document.querySelector('#btnSub');
                       btnSub.addEventListener('click', () => {
                           operator = '-';
-                          display.textContent = `${displayNum}-`;
+                          displayNumPrev = displayNum;
+                          displayNum = [0];
+                          display.textContent = `${displayNumPrev} - ${displayNum}`;
                         });
 
                         const btnMulti = document.querySelector('#btnMulti');
                         btnMulti.addEventListener('click', () => {
                           operator = '*';
-                          display.textContent = `${displayNum}*`;
+                          displayNumPrev = displayNum;
+                          displayNum = [0];
+                          display.textContent = `${displayNumPrev} * ${displayNum}`;
                         });
 
 
                         const btnDiv = document.querySelector('#btnDiv');
                         btnDiv.addEventListener('click', () => {
                           operator = '/';
-                          display.textContent = `${displayNum}/`;
+                          displayNumPrev = displayNum;
+                          displayNum = [0];
+                          display.textContent = `${displayNumPrev} / ${displayNum}`;
                         });
 
                     const btnE = document.querySelector('#btnE');
                     btnE.addEventListener('click', () => {
-                      operate()
+                      console.log(operator);
+                      console.log(displayNumPrev);
+                      operate(operator, displayNumPrev, displayNum);
                         display.textContent = `${displayNum}`;
                       });
                       
                       const btnC = document.querySelector('#btnC');
                       btnC.addEventListener('click', () => {
                         displayNum =[0];
+                        displayNumPrev =[0];
                           display.textContent = `${displayNum}`;
                         });                        
 
@@ -109,21 +122,21 @@ const divide = (num1, num2) => num1 / num2;
 // and 2 numbers and then calls one of the above functions on the numbers.
 
 function operate(operator, num1, num2) {
-    if (operator === '+' || operator === 'add') {
-        return add(num1, num2);
+  let num1Int = parseInt(num1);
+  let num2Int = parseInt(num2);
+    if (operator === '+') {      
+        displayNum = add(num1Int, num2Int);
     }
-    else if (operator === '-' || operator === 'subtract') {
-        return subtract(num1, num2);
+    else if (operator === '-') {
+        displayNum = subtract(num1Int, num2Int);
     }
-    else if (operator === '*' || operator === 'multiply') {
-        return multiply(num1, num2);
+    else if (operator === '*') {
+        displayNum = multiply(num1Int, num2Int);
     }
-    else if (operator === '/' || operator === 'divide') {
-        return divide(num1, num2);
+    else if (operator === '/' && num1 === 0 || num2 === 0) {
+        display.textContent = ("Don't divide by 0");
     }
-    
+    else if (operator === '/') {
+        displayNum = divide(num1Int, num2Int); 
+  }
 }
-
-console.log(operate("+",5,10));
-console.log(operate("/",21,7));
-console.log(operate("multiply",5,10));
