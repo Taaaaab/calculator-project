@@ -1,0 +1,46 @@
+body {
+    display: inline-block;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 220px;
+    margin-right: 220px;
+}
+
+#display {
+    background-color: grey;
+    font-size: 22px;
+    color: white;
+    text-align: start;
+    padding: 10px;
+}
+
+btn {
+    background-color: grey; 
+    border: none;
+    color: white;
+    padding: 14px 28px;
+    margin: 3px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 22px;
+}
+
+#btnAdd {
+    background-color: darkolivegreen;
+}  
+
+#btnSub {
+    background-color: darkolivegreen;
+}
+
+#btnMulti {
+    background-color: darkolivegreen;
+}
+
+#btnDiv {
+    background-color: darkolivegreen;
+}
+
+#btnE {
+    background-color: forestgreen;
+}   

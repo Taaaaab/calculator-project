@@ -66,6 +66,9 @@ btn9.addEventListener('click', () => {
                     
                     const btnAdd = document.querySelector('#btnAdd');
                     btnAdd.addEventListener('click', () => {
+                      if (operator != '') {
+                        operate(operator, displayNumPrev, displayNum);
+                      }
                         operator = '+';
                         displayNumPrev = displayNum;
                         displayNum = [0];
@@ -74,6 +77,9 @@ btn9.addEventListener('click', () => {
                     
                       const btnSub = document.querySelector('#btnSub');
                       btnSub.addEventListener('click', () => {
+                        if (operator != '') {
+                          operate(operator, displayNumPrev, displayNum);
+                        }
                           operator = '-';
                           displayNumPrev = displayNum;
                           displayNum = [0];
@@ -82,15 +88,20 @@ btn9.addEventListener('click', () => {
 
                         const btnMulti = document.querySelector('#btnMulti');
                         btnMulti.addEventListener('click', () => {
+                          if (operator != '') {
+                            operate(operator, displayNumPrev, displayNum);
+                          }
                           operator = '*';
                           displayNumPrev = displayNum;
                           displayNum = [0];
                           display.textContent = `${displayNumPrev} * ${displayNum}`;
                         });
 
-
                         const btnDiv = document.querySelector('#btnDiv');
                         btnDiv.addEventListener('click', () => {
+                          if (operator != '') {
+                            operate(operator, displayNumPrev, displayNum);
+                          }
                           operator = '/';
                           displayNumPrev = displayNum;
                           displayNum = [0];
@@ -134,16 +145,20 @@ function operate(operator, num1, num2) {
      if (operator === '+') {      
         displayNum = add(num1Int, num2Int);
         display.textContent = `${displayNum}`;
+        displayNumPrev =[0];
     } else if (operator === '-') {
         displayNum = subtract(num1Int, num2Int);
         display.textContent = `${displayNum}`;
+        displayNumPrev =[0];
     } else if (operator === '*') {
         displayNum = multiply(num1Int, num2Int);
         display.textContent = `${displayNum}`;
+        displayNumPrev =[0];
     } else if (operator === '/' && num1Int === 0 || num2Int === 0) {
         display.textContent = 'Cannot divide by 0';
     } else if (operator === '/') {
         displayNum = divide(num1Int, num2Int); 
         display.textContent = `${displayNum}`;
+        displayNumPrev =[0];
     }
 }
