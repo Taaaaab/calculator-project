@@ -3,7 +3,6 @@ const display = document.querySelector('#display');
 let displayNum = [0];
 let displayNumPrev = [0];
 let operator = '';
-let equalNum = 0;
 
 const btn9 = document.querySelector('#btn9');
 btn9.addEventListener('click', () => {
@@ -102,16 +101,24 @@ btn9.addEventListener('click', () => {
                     btnE.addEventListener('click', () => {
                       console.log(operator);
                       console.log(displayNumPrev);
-                      operate(operator, displayNumPrev, displayNum);
-                        display.textContent = `${displayNum}`;
+                      check();
                       });
                       
                       const btnC = document.querySelector('#btnC');
                       btnC.addEventListener('click', () => {
                         displayNum =[0];
                         displayNumPrev =[0];
-                          display.textContent = `${displayNum}`;
-                        });                        
+                        operator = '';
+                        display.textContent = `${displayNum}`;
+                        });    
+
+function check() {
+  if (operator === '') {
+    display.textContent = 'Must use an operator first';
+  } else if (displayNum === NaN || displayNum === Infinity) {
+    display.textContent = 'Error'; 
+  } else operate(operator, displayNumPrev, displayNum);
+}
 
 const add = (num1, num2) => num1 + num2;
 const subtract = (num1, num2) => num1 - num2;
@@ -124,19 +131,19 @@ const divide = (num1, num2) => num1 / num2;
 function operate(operator, num1, num2) {
   let num1Int = parseInt(num1);
   let num2Int = parseInt(num2);
-    if (operator === '+') {      
+     if (operator === '+') {      
         displayNum = add(num1Int, num2Int);
-    }
-    else if (operator === '-') {
+        display.textContent = `${displayNum}`;
+    } else if (operator === '-') {
         displayNum = subtract(num1Int, num2Int);
-    }
-    else if (operator === '*') {
+        display.textContent = `${displayNum}`;
+    } else if (operator === '*') {
         displayNum = multiply(num1Int, num2Int);
-    }
-    else if (operator === '/' && num1 === 0 || num2 === 0) {
-        display.textContent = ("Don't divide by 0");
-    }
-    else if (operator === '/') {
+        display.textContent = `${displayNum}`;
+    } else if (operator === '/' && num1Int === 0 || num2Int === 0) {
+        display.textContent = 'Cannot divide by 0';
+    } else if (operator === '/') {
         displayNum = divide(num1Int, num2Int); 
-  }
+        display.textContent = `${displayNum}`;
+    }
 }
