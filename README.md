@@ -1,6 +1,6 @@
 # calculator-project
 
-Working calculator using HTML, CSS and JavaScript. Refactored to use TypeScript. Practice connecting JavaScript logic to DOM elements.
+Working calculator using HTML, CSS and JavaScript. Practice connecting JavaScript logic to DOM elements.
 
 ## Deployed site on Github Pages
 

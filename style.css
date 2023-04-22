@@ -1,4 +1,6 @@
 :root {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -62,13 +64,25 @@ button:active {
 }
 
 #clear {
-  width: 100%;
+  display: inline-block;
+  width: 150px;
   background-color: rgb(252, 226, 27);
   font-size: 30px;
 }
 
 #clear:hover {
-  width: 100%;
   background-color: rgb(252, 201, 17);
+  font-size: 30px;
+}
+
+#backspace {
+  display: inline-block;
+  width: 50px;
+  background-color: rgb(255, 181, 33);
+  font-size: 30px;
+}
+
+#backspace:hover {
+  background-color: rgb(200, 160, 15);
   font-size: 30px;
 }
